@@ -11,10 +11,10 @@ Reset='\x1b[m'
 #=====END=====
 declare proxies
 proxies=(
-	[m1]="192.168.1.11|user|pass"
-	[m2]="192.168.1.12|user|pass"
-	[m3]="192.168.1.13|user|pass"
-	[m4]="192.168.1.14|user|pass"
+	"192.168.1.11|user|pass"
+	"192.168.1.12|user|pass"
+	"192.168.1.13|user|pass"
+	"192.168.1.14|user|pass"
 	)
 
 RANGE="Nah"
