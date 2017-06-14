@@ -58,7 +58,7 @@ do
 			exit 1
 			;;
 		h)
-			echo -e "${Red}Fanghu's distributed download application!${Reset}${Yellow}<fhzheng@iflytek.com>${Reset}\n${Green}DOWNLOAD:${Reset}\n\t-r range: HTTP Range\n\t-p proxy: Proxy\n\t-a archive: Download archive\n\t-n filename: Filename\n${Green}MISC:${Reset}\n\t-s proxy: Proxy's status\n\t-g machine: Log into specificed machine\n\t-h: Help\n\t-l: List proxies"
+			echo -e "${Red}Fanghu's distributed download application!${Reset}${Yellow}<mtdwss@gmail.com>${Reset}\n${Green}DOWNLOAD:${Reset}\n\t-r range: HTTP Range\n\t-p proxy: Proxy\n\t-a archive: Download archive\n\t-n filename: Filename\n${Green}MISC:${Reset}\n\t-s proxy: Proxy's status\n\t-g machine: Log into specificed machine\n\t-h: Help\n\t-l: List proxies"
 			exit 1
 			;;
 		?)
