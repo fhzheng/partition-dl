@@ -79,7 +79,7 @@ elif [ $RANGE != "Nah" -a $PROXY != "Nah" -a $URL != "Nah" -a $FILENAME != "Nah"
 	pass=`echo $proxy | cut -d "|" -f3`
 	ip=`echo $proxy | cut -d "|" -f1`
 	user=`echo $proxy | cut -d "|" -f2`
-	DCMD="nohup curl -O $FILENAME.$RANGE.tmp -r ${RANGE} ${URL} > nohup.out 2>&1 &"
+	DCMD="nohup curl -o $FILENAME.$RANGE.tmp -r ${RANGE} ${URL} > nohup.out 2>&1 &"
 	SCMD="sshpass -p $pass ssh -l $user $ip \"$DCMD\""
 elif [ $GOTO_MACHINE != "Nah"  ];then
 	machine=${proxies[$GOTO_MACHINE]}
