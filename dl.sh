@@ -24,8 +24,9 @@ URL="Nah"
 SHOW_STATUS="Nah"
 FILENAME="Nah"
 GOTO_MACHINE="Nah"
+SFTP_MACHINE="Nah"
 SCMD="Nah"
-while getopts "r:p:a:s:n:g:hl" arg
+while getopts "r:p:a:s:n:g:f:hl" arg
 do
 	case $arg in
 		r)
@@ -50,6 +51,9 @@ do
 		g)
 			GOTO_MACHINE=$OPTARG
 			;;
+		f)
+			SFTP_MACHINE=$OPTARG
+			;;
 		l)
 			for key in $(echo ${!proxies[*]})
 			do
@@ -59,7 +63,7 @@ do
 			exit 1
 			;;
 		h)
-			echo -e "${Red}Fanghu's distributed download application!${Reset}${Yellow}<mtdwss@gmail.com>${Reset}\n${Green}DOWNLOAD:${Reset}\n\t-r range: HTTP Range, n-m\n\t-p proxy: Proxy number listed in the -l command\n\t-a archive: Download archive\n\t-n filename: Filename\n${Green}MISC:${Reset}\n\t-s proxy: Proxy's status\n\t-g machine: Log into specificed machine\n\t-h: Help\n\t-l: List proxies"
+			echo -e "${Red}Fanghu's distributed download application!${Reset}${Yellow}<mtdwss@gmail.com>${Reset}\n${Green}DOWNLOAD:${Reset}\n\t-r range: HTTP Range, n-m\n\t-p proxy: Proxy number listed in the -l command\n\t-a archive: Download archive\n\t-n filename: Filename\n${Green}MISC:${Reset}\n\t-s proxy: Proxy's status\n\t-g machine: Log into specificed machine\n\t-f machine: SFTP into specificed machine\n\t-h: Help\n\t-l: List proxies"
 			exit 1
 			;;
 		?)
@@ -87,6 +91,12 @@ elif [ $GOTO_MACHINE != "Nah"  ];then
 	ip=`echo $machine | cut -d "|" -f1`
 	user=`echo $machine | cut -d "|" -f2`
 	SCMD="sshpass -p $pass ssh $user@$ip"
+elif [ $SFTP_MACHINE != "Nah" ];then
+	machine=${proxies[$GOTO_MACHINE]}
+	pass=`echo $machine | cut -d "|" -f3`
+	ip=`echo $machine | cut -d "|" -f1`
+	user=`echo $machine | cut -d "|" -f2`
+	SCMD="sshpass -p $pass sftp $user@$ip"
 else
 	echo -e "WARNING Arguments not enough!\nUse '-h' to view all options"
 	exit 1
